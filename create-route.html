@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WayShare - создать маршрут</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a class="logo" href="index.html">WayShare</a>
+
+      <nav class="main-navigation" aria-label="Основная навигация">
+        <a href="index.html">Главная</a>
+        <a href="map.html">Карта</a>
+        <a href="create-route.html" aria-current="page">Создать маршрут</a>
+        <a href="profile.html">Профиль</a>
+      </nav>
+
+      <button class="menu-button" type="button" aria-label="Открыть меню">
+        Меню
+      </button>
+    </header>
+
+    <main class="create-page-main">
+      <section class="create-route-section" aria-labelledby="create-title">
+        <div class="form-introduction">
+          <p class="eyebrow">Новый опыт</p>
+          <h1 id="create-title">Поделись своим маршрутом</h1>
+          <p>
+            Расскажи, как провести вечер, прогулку или выходной.
+            После проверки формы маршрут появится в ленте и на карте.
+          </p>
+        </div>
+
+        <form class="route-form" id="route-form">
+          <label for="route-title">
+            Название маршрута
+            <input
+              id="route-title"
+              name="title"
+              type="text"
+              minlength="5"
+              maxlength="80"
+              required
+              placeholder="Например, Тихий вечер у Ангары"
+            >
+          </label>
+
+          <label for="route-location">
+            Начальная точка
+            <input
+              id="route-location"
+              name="location"
+              type="text"
+              minlength="3"
+              required
+              placeholder="Например, Нижняя набережная"
+            >
+          </label>
+
+          <label for="route-category">
+            Категория
+            <select id="route-category" name="category" required>
+              <option value="">Выбери категорию</option>
+              <option value="walk">Прогулка</option>
+              <option value="food">Еда</option>
+              <option value="culture">Культура</option>
+              <option value="nature">Природа</option>
+            </select>
+          </label>
+
+          <label for="route-budget">
+            Бюджет, рублей
+            <input
+              id="route-budget"
+              name="budget"
+              type="number"
+              min="0"
+              max="50000"
+              required
+              placeholder="1000"
+            >
+          </label>
+
+          <label for="route-duration">
+            Длительность, часов
+            <input
+              id="route-duration"
+              name="duration"
+              type="number"
+              min="1"
+              max="24"
+              required
+              placeholder="3"
+            >
+          </label>
+
+          <fieldset class="route-format">
+            <legend>Формат маршрута</legend>
+
+            <label for="format-solo">
+              <input
+                id="format-solo"
+                name="format"
+                type="radio"
+                value="solo"
+                required
+              >
+              В одиночестве
+            </label>
+
+            <label for="format-friends">
+              <input
+                id="format-friends"
+                name="format"
+                type="radio"
+                value="friends"
+              >
+              С друзьями
+            </label>
+
+            <label for="format-family">
+              <input
+                id="format-family"
+                name="format"
+                type="radio"
+                value="family"
+              >
+              С семьёй
+            </label>
+          </fieldset>
+
+          <label class="form-description" for="route-description">
+            Краткое описание
+            <textarea
+              id="route-description"
+              name="description"
+              minlength="20"
+              maxlength="500"
+              required
+              placeholder="Расскажи, куда идти, что посмотреть и почему этот маршрут стоит попробовать."
+            ></textarea>
+          </label>
+
+          <label class="checkbox-label" for="route-public">
+            <input id="route-public" name="isPublic" type="checkbox" checked>
+            Опубликовать маршрут для сообщества
+          </label>
+
+          <button class="primary-button" type="submit">
+            Опубликовать маршрут
+          </button>
+
+          <p class="form-message" id="form-message" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="logo" href="index.html">WayShare</a>
+      <p>Социальная сеть маршрутов и личного опыта.</p>
+    </footer>
+  </body>
+</html>
