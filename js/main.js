@@ -17,7 +17,7 @@ function showRoutes(list, element) {
   `).join("");
 }
 
-const homeRoutes = document.querySelector("#home-routes");
+const homeRoutes = document.querySelector("#feed-routes");
 const mapRoutes = document.querySelector("#map-routes");
 const profileRoutes = document.querySelector("#profile-routes");
 
