@@ -1,97 +1,44 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WayShare - профиль</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js" defer></script>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WayShare — профиль</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="logo" href="index.html">WayShare</a>
+  <nav class="main-navigation" aria-label="Основная навигация">
+    <a href="index.html">Главная</a>
+    <a href="map.html">Карта</a>
+    <a href="create-route.html">Создать маршрут</a>
+    <a href="profile.html" aria-current="page">Профиль</a>
+  </nav>
+  <button class="menu-button" type="button">Меню</button>
+</header>
 
-  <body>
-    <header class="site-header">
-      <a class="logo" href="index.html">WayShare</a>
+<main>
+  <section class="section">
+    <p class="eyebrow">Профиль</p>
+    <h1>Анна Смирнова</h1>
+    <p class="muted">Люблю прогулки, интересные места и новые маршруты.</p>
 
-      <nav class="main-navigation" aria-label="Основная навигация">
-        <a href="index.html">Главная</a>
-        <a href="map.html">Карта</a>
-        <a href="create-route.html">Создать маршрут</a>
-        <a href="profile.html" aria-current="page">Профиль</a>
-      </nav>
+    <div class="stats">
+      <div><strong id="profile-route-count">0</strong><span>маршрутов</span></div>
+      <div><strong>24</strong><span>лайка</span></div>
+      <div><strong>12</strong><span>подписчиков</span></div>
+    </div>
 
-      <button class="menu-button" type="button" aria-label="Открыть меню">
-        Меню
-      </button>
-    </header>
+    <h2>Мои маршруты</h2>
+    <div class="route-list" id="profile-routes"></div>
+  </section>
+</main>
 
-    <main class="profile-page-main">
-      <section class="profile-header" aria-labelledby="profile-name">
-        <div class="profile-avatar" aria-label="Аватар Анны Бутаковой">
-          АБ
-        </div>
-
-        <div class="profile-intro">
-          <p class="eyebrow">Профиль</p>
-          <h1 id="profile-name">Арина Бутакова</h1>
-          <p class="profile-location">Иркутск</p>
-          <p>
-            Ищу тихие городские маршруты, красивые виды и места,
-            в которые хочется возвращаться.
-          </p>
-        </div>
-
-        <button class="secondary-button" id="edit-profile-button" type="button">
-          Редактировать профиль
-        </button>
-      </section>
-
-      <section class="profile-stats" aria-label="Статистика профиля">
-        <div>
-          <strong id="created-routes-count">0</strong>
-          <span>созданных маршрутов</span>
-        </div>
-
-        <div>
-          <strong id="saved-routes-count">0</strong>
-          <span>в избранном</span>
-        </div>
-
-        <div>
-          <strong>2026</strong>
-          <span>в сообществе с</span>
-        </div>
-      </section>
-
-      <section class="profile-routes" aria-labelledby="my-routes-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Мои публикации</p>
-            <h2 id="my-routes-title">Созданные маршруты</h2>
-          </div>
-
-          <a class="text-link" href="create-route.html">Создать новый</a>
-        </div>
-
-        <div class="routes-grid" id="user-routes"></div>
-      </section>
-
-      <section class="profile-routes" aria-labelledby="saved-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Для будущих прогулок</p>
-            <h2 id="saved-title">Избранные маршруты</h2>
-          </div>
-
-          <a class="text-link" href="map.html">Исследовать карту</a>
-        </div>
-
-        <div class="routes-grid" id="saved-routes"></div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <a class="logo" href="index.html">WayShare</a>
-      <p>Социальная сеть маршрутов и личного опыта.</p>
-    </footer>
-  </body>
+<footer class="site-footer">
+  <a class="logo" href="index.html">WayShare</a>
+  <p>Социальная сеть маршрутов и личного опыта.</p>
+</footer>
+</body>
 </html>
