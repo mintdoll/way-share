@@ -1,108 +1,63 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WayShare - карта маршрутов</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js" defer></script>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WayShare — карта</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="logo" href="index.html">WayShare</a>
+  <nav class="main-navigation" aria-label="Основная навигация">
+    <a href="index.html">Главная</a>
+    <a href="map.html" aria-current="page">Карта</a>
+    <a href="create-route.html">Создать маршрут</a>
+    <a href="profile.html">Профиль</a>
+  </nav>
+  <button class="menu-button" type="button">Меню</button>
+</header>
 
-  <body>
-    <header class="site-header">
-      <a class="logo" href="index.html">WayShare</a>
+<main>
+  <section class="section">
+    <p class="eyebrow">Исследуй город</p>
+    <h1>Маршруты на карте</h1>
 
-      <nav class="main-navigation" aria-label="Основная навигация">
-        <a href="index.html">Главная</a>
-        <a href="map.html" aria-current="page">Карта</a>
-        <a href="create-route.html">Создать маршрут</a>
-        <a href="profile.html">Профиль</a>
-      </nav>
+    <div class="filters">
+      <label>
+        Поиск
+        <input id="map-search" type="search" placeholder="Название маршрута">
+      </label>
 
-      <button class="menu-button" type="button" aria-label="Открыть меню">
-        Меню
-      </button>
-    </header>
+      <label>
+        Категория
+        <select id="map-category">
+          <option value="all">Все</option>
+          <option value="walk">Прогулка</option>
+          <option value="food">Еда</option>
+          <option value="culture">Культура</option>
+          <option value="nature">Природа</option>
+        </select>
+      </label>
+    </div>
 
-    <main class="map-page-main">
-      <section class="map-explorer" aria-labelledby="map-title">
-        <aside class="map-sidebar">
-          <div>
-            <p class="eyebrow">Исследователь города</p>
-            <h1 id="map-title">Маршруты на карте</h1>
-            <p>
-              Выбери настроение, бюджет и длительность, чтобы найти
-              подходящую идею для прогулки.
-            </p>
-          </div>
+    <div class="map-layout">
+      <div>
+        <h2>Маршруты</h2>
+        <div class="route-list" id="map-routes"></div>
+      </div>
 
-          <form class="map-filters" id="map-filters">
-            <label for="map-search">
-              Поиск
-              <input
-                id="map-search"
-                type="search"
-                placeholder="Название или настроение"
-              >
-            </label>
+      <div class="empty-map">
+        <p>Здесь будет карта</p>
+      </div>
+    </div>
+  </section>
+</main>
 
-            <label for="map-category-filter">
-              Категория
-              <select id="map-category-filter">
-                <option value="all">Все категории</option>
-                <option value="walk">Прогулка</option>
-                <option value="food">Еда</option>
-                <option value="culture">Культура</option>
-                <option value="nature">Природа</option>
-              </select>
-            </label>
-
-            <label for="map-budget-filter">
-              Бюджет
-              <select id="map-budget-filter">
-                <option value="all">Любой бюджет</option>
-                <option value="free">Бесплатно</option>
-                <option value="low">До 1000 рублей</option>
-                <option value="medium">До 3000 рублей</option>
-              </select>
-            </label>
-
-            <label for="map-duration-filter">
-              Длительность
-              <select id="map-duration-filter">
-                <option value="all">Любая длительность</option>
-                <option value="short">До 2 часов</option>
-                <option value="medium">2-4 часа</option>
-                <option value="long">Более 4 часов</option>
-              </select>
-            </label>
-
-            <button class="secondary-button" id="map-reset-filters" type="button">
-              Сбросить фильтры
-            </button>
-          </form>
-
-          <p class="routes-count" id="map-routes-count"></p>
-          <div class="map-route-list" id="map-route-list"></div>
-        </aside>
-
-        <section class="map-canvas-section" aria-label="Интерактивная карта">
-          <div class="map-toolbar">
-            <p>Выбери метку на карте, чтобы открыть маршрут.</p>
-          </div>
-
-          <div class="route-map" id="route-map">
-            <p class="map-placeholder">
-              Здесь появится интерактивная карта маршрутов.
-            </p>
-          </div>
-        </section>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <a class="logo" href="index.html">WayShare</a>
-      <p>Социальная сеть маршрутов и личного опыта.</p>
-    </footer>
-  </body>
+<footer class="site-footer">
+  <a class="logo" href="index.html">WayShare</a>
+  <p>Социальная сеть маршрутов и личного опыта.</p>
+</footer>
+</body>
 </html>
