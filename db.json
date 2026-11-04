@@ -5,14 +5,14 @@
       "username": "anna",
       "displayName": "Анна Смирнова",
       "bio": "Люблю прогулки, интересные места и новые маршруты.",
-      "avatarUrl": "/assets/images/hero-city.jpg"
+      "avatarUrl": ""
     },
     {
       "id": 2,
       "username": "maria",
       "displayName": "Мария Иванова",
       "bio": "Ищу красивые места и делюсь маршрутами по городу.",
-      "avatarUrl": "/assets/images/hero-city.jpg"
+      "avatarUrl": ""
     }
   ],
   "routes": [
@@ -27,7 +27,7 @@
       "description": "Пройдите по центральным улицам, загляните на площадь и осмотрите старые здания города.",
       "format": "friends",
       "isPublic": true,
-      "photoUrl": "/assets/images/hero-city.jpg",
+      "photoUrl": "/assets/images/центр.jpg",
       "publishedAt": "2026-11-01T10:00:00.000Z",
       "coordinates": null
     },
@@ -42,7 +42,7 @@
       "description": "Спокойный маршрут вдоль воды. Лучше всего идти ближе к закату, когда включается городское освещение.",
       "format": "solo",
       "isPublic": true,
-      "photoUrl": "/assets/images/hero-city.jpg",
+      "photoUrl": "/assets/images/набережная.jpg",
       "publishedAt": "2026-11-02T16:30:00.000Z",
       "coordinates": null
     },
@@ -57,7 +57,7 @@
       "description": "Небольшой гастрономический маршрут по кафе и уютным местам в центре города.",
       "format": "friends",
       "isPublic": true,
-      "photoUrl": "/assets/images/hero-city.jpg",
+      "photoUrl": "/assets/images/тц.jpg",
       "publishedAt": "2026-11-03T12:15:00.000Z",
       "coordinates": null
     },
@@ -72,7 +72,7 @@
       "description": "Посетите музей, а затем прогуляйтесь по историческим улицам рядом с ним.",
       "format": "family",
       "isPublic": true,
-      "photoUrl": "/assets/images/hero-city.jpg",
+      "photoUrl": "/assets/images/исторический центр.jpg",
       "publishedAt": "2026-11-04T08:20:00.000Z",
       "coordinates": null
     },
@@ -87,7 +87,7 @@
       "description": "Маршрут для отдыха на природе: дорожки парка, тихие места и время для неспешной прогулки.",
       "format": "solo",
       "isPublic": true,
-      "photoUrl": "/assets/images/hero-city.jpg",
+      "photoUrl": "/assets/images/парк.jpg",
       "publishedAt": "2026-11-04T09:00:00.000Z",
       "coordinates": null
     }
