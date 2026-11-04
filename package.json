@@ -1,0 +1,26 @@
+{
+  "name": "wayshare-spa",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"npm:api\" \"npm:web\"",
+    "web": "vite --host 127.0.0.1",
+    "api": "json-server --watch db.json --port 3001 --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.6"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^4.7.0",
+    "concurrently": "^9.2.5",
+    "json-server": "^0.17.4",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.5"
+  }
+}
