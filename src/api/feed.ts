@@ -4,11 +4,17 @@ import type {
   RouteCategory,
   RouteFormat,
 } from "../types/route";
-import type { User } from "../types/social";
+import type { Follow, User } from "../types/social";
 
 export interface FeedData {
   routes: Route[];
   users: User[];
+  follows: Follow[];
+}
+
+export interface RouteDetails {
+  route: Route;
+  author: User;
 }
 
 const API_URL = "http://127.0.0.1:3001";
@@ -98,14 +104,35 @@ function parseUser(value: unknown): User {
   };
 }
 
-async function getCollection(path: string): Promise<unknown[]> {
+function parseFollow(value: unknown): Follow {
+  if (
+    !isRecord(value) ||
+    typeof value.id !== "number" ||
+    typeof value.followerId !== "number" ||
+    typeof value.followedId !== "number"
+  ) {
+    throw new Error("Сервер вернул подписку в неверном формате.");
+  }
+
+  return {
+    id: value.id,
+    followerId: value.followerId,
+    followedId: value.followedId,
+  };
+}
+
+async function getJson(path: string): Promise<unknown> {
   const response = await fetch(`${API_URL}${path}`);
 
   if (!response.ok) {
     throw new Error(`Ошибка API: HTTP ${response.status}`);
   }
 
-  const data: unknown = await response.json();
+  return (await response.json()) as unknown;
+}
+
+async function getCollection(path: string): Promise<unknown[]> {
+  const data = await getJson(path);
 
   if (!Array.isArray(data)) {
     throw new Error(`API вернул не список данных: ${path}`);
@@ -115,18 +142,29 @@ async function getCollection(path: string): Promise<unknown[]> {
 }
 
 export async function fetchFeed(): Promise<FeedData> {
-  const [routeData, userData] = await Promise.all([
+  const [routeData, userData, followData] = await Promise.all([
     getCollection("/routes"),
     getCollection("/users"),
+    getCollection("/follows"),
   ]);
 
   const routes = routeData.map(parseRoute);
   const users = userData.map(parseUser);
+  const follows = followData.map(parseFollow);
 
   routes.sort(
     (first, second) =>
       Date.parse(second.publishedAt) - Date.parse(first.publishedAt),
   );
 
-  return { routes, users };
+  return { routes, users, follows };
+}
+
+export async function fetchRouteDetails(
+  routeId: number,
+): Promise<RouteDetails> {
+  const route = parseRoute(await getJson(`/routes/${routeId}`));
+  const author = parseUser(await getJson(`/users/${route.authorId}`));
+
+  return { route, author };
 }

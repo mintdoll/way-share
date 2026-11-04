@@ -1,6 +1,7 @@
 import { CATEGORY_LABELS } from "../types/route";
 import type { Route } from "../types/route";
 import type { User } from "../types/social";
+import { Link } from "react-router-dom";
 
 interface FeedPostProps {
   route: Route;
@@ -35,7 +36,13 @@ export function FeedPost({ route, author }: FeedPostProps) {
         )}
 
         <div>
-          <strong>{author?.displayName ?? "Неизвестный пользователь"}</strong>
+          {author ? (
+            <Link to={`/profile/${author.id}`}>
+                <strong>{author.displayName}</strong>
+            </Link>
+          ) : (
+            <strong>Неизвестный пользователь</strong>
+        )}
           <p className="muted">@{author?.username ?? "unknown"}</p>
         </div>
 
@@ -52,7 +59,9 @@ export function FeedPost({ route, author }: FeedPostProps) {
 
       <div className="feed-post-content">
         <p className="eyebrow">{CATEGORY_LABELS[route.category]}</p>
-        <h2>{route.title}</h2>
+        <h2>
+            <Link to={`/routes/${route.id}`}>{route.title}</Link>
+        </h2>
         <p>{route.description}</p>
         <p className="route-meta">
           {route.location} · {route.duration} ч ·{" "}

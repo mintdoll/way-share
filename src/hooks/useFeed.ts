@@ -6,6 +6,7 @@ export function useFeed() {
   const [feed, setFeed] = useState<FeedData>({
     routes: [],
     users: [],
+    follows: [],
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
