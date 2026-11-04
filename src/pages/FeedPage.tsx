@@ -1,6 +1,7 @@
 import { FeedList } from "../components/FeedList";
 import { FeedState } from "../components/FeedState";
 import { useFeed } from "../hooks/useFeed";
+import { Link } from "react-router-dom";
 
 export function FeedPage() {
   const { routes, users, loading, error, reload } = useFeed();
@@ -19,9 +20,9 @@ export function FeedPage() {
             <p className="eyebrow">Социальная сеть маршрутов</p>
             <h1 id="hero-title">Открой город по-новому</h1>
             <p>Смотри идеи для прогулок и делись любимыми местами.</p>
-            <a className="primary-button" href="/create-route.html">
+            <Link className="primary-button" to="/routes/new">
               Создать маршрут
-            </a>
+            </Link>
           </div>
         </div>
       </section>

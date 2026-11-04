@@ -4,6 +4,7 @@ import { FeedPage } from "./pages/FeedPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { RouteDetailsPage } from "./pages/RouteDetailsPage";
 import { RoutesPage } from "./pages/RoutesPage";
+import { CreateRoutePage } from "./pages/CreateRoutePage";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <Route element={<SiteLayout />}>
           <Route path="/" element={<FeedPage />} />
           <Route path="/routes" element={<RoutesPage />} />
+          <Route path="/routes/new" element={<CreateRoutePage />} />
           <Route
             path="/routes/:routeId"
             element={<RouteDetailsPage />}

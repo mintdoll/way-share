@@ -3,6 +3,7 @@ import type {
   Route,
   RouteCategory,
   RouteFormat,
+  RouteInput,
 } from "../types/route";
 import type { Follow, User } from "../types/social";
 
@@ -167,4 +168,20 @@ export async function fetchRouteDetails(
   const author = parseUser(await getJson(`/users/${route.authorId}`));
 
   return { route, author };
+}
+export async function createRoute(input: RouteInput): Promise<Route> { //POST отправляет данные нового маршрута
+  const response = await fetch(`${API_URL}/routes`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(input),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Не удалось создать маршрут: HTTP ${response.status}`);
+  }
+
+  const data: unknown = await response.json();
+  return parseRoute(data);
 }

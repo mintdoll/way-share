@@ -9,7 +9,7 @@ export function SiteHeader() {
         <NavLink to="/" end>Лента</NavLink>
         <NavLink to="/routes">Маршруты</NavLink>
         <a href="/map.html">Карта</a>
-        <a href="/create-route.html">Создать маршрут</a>
+        <NavLink to="/routes/new">Создать маршрут</NavLink>
         <NavLink to="/profile/1">Профиль</NavLink>
       </nav>
     </header>
