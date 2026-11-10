@@ -5,6 +5,7 @@ import { ProfilePage } from "./pages/ProfilePage";
 import { RouteDetailsPage } from "./pages/RouteDetailsPage";
 import { CreateRoutePage } from "./pages/CreateRoutePage";
 import { MapPage } from "./pages/MapPage";
+import { EditRoutePage } from "./pages/EditRoutePage";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
           <Route path="/map" element={<MapPage />} />
           <Route path="/routes" element={<Navigate to="/" replace />} />
           <Route path="/routes/new" element={<CreateRoutePage />} />
+          <Route path="/routes/:routeId/edit" element={<EditRoutePage />} />
           <Route
             path="/routes/:routeId"
             element={<RouteDetailsPage />}

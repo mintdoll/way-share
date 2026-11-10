@@ -185,3 +185,32 @@ export async function createRoute(input: RouteInput): Promise<Route> { //POST о
   const data: unknown = await response.json();
   return parseRoute(data);
 }
+export async function updateRoute(
+  routeId: number,
+  input: RouteInput,
+): Promise<Route> {
+  const response = await fetch(`${API_URL}/routes/${routeId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(input),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Не удалось обновить маршрут: HTTP ${response.status}`);
+  }
+
+  const data: unknown = await response.json();
+  return parseRoute(data);
+}
+
+export async function deleteRoute(routeId: number): Promise<void> {
+  const response = await fetch(`${API_URL}/routes/${routeId}`, {
+    method: "DELETE",
+  });
+
+  if (!response.ok) {
+    throw new Error(`Не удалось удалить маршрут: HTTP ${response.status}`);
+  }
+}

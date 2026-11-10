@@ -2,13 +2,16 @@ import { useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import {
   CATEGORY_LABELS,
+  type Route,
   type RouteCategory,
   type RouteFormat,
   type RouteInput,
 } from "../types/route";
 
+
 interface RouteFormProps {
   onSubmit: (input: RouteInput) => Promise<void>;
+  initialRoute?: Route;
 }
 
 interface FormValues {
@@ -32,7 +35,20 @@ const INITIAL_VALUES: FormValues = {
   format: "friends",
   isPublic: true,
 };
+function getInitialValues(route?: Route): FormValues {
+  if (!route) return INITIAL_VALUES;
 
+  return {
+    title: route.title,
+    category: route.category,
+    location: route.location,
+    budget: String(route.budget),
+    duration: String(route.duration),
+    description: route.description,
+    format: route.format,
+    isPublic: route.isPublic,
+  };
+}
 const MAX_IMAGE_SIZE = 60 * 1024;
 const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
 
@@ -65,9 +81,11 @@ function isRouteCategory(value: string): value is RouteCategory {
   );
 }
 
-export function RouteForm({ onSubmit }: RouteFormProps) {
-  const [values, setValues] = useState<FormValues>(INITIAL_VALUES);
-  const [photoUrl, setPhotoUrl] = useState("");
+export function RouteForm({ onSubmit, initialRoute }: RouteFormProps) {
+  const [values, setValues] = useState<FormValues>(() =>
+    getInitialValues(initialRoute),
+  );
+  const [photoUrl, setPhotoUrl] = useState(initialRoute?.photoUrl ?? "");
   const [photoLoading, setPhotoLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -124,17 +142,16 @@ export function RouteForm({ onSubmit }: RouteFormProps) {
       setError("Выберите категорию маршрута.");
       return;
     }
-
     if (!photoUrl) {
-      setError("Добавьте фотографию маршрута.");
-      return;
+        setError("Добавьте фотографию маршрута.");
+        return;
     }
 
     setSaving(true);
 
     try {
       const input: RouteInput = {
-        authorId: 1,
+        authorId: initialRoute?.authorId ?? 1,
         title: values.title.trim(),
         category: values.category,
         location: values.location.trim(),
@@ -144,8 +161,8 @@ export function RouteForm({ onSubmit }: RouteFormProps) {
         format: values.format,
         isPublic: values.isPublic,
         photoUrl,
-        publishedAt: new Date().toISOString(),
-        coordinates: null,
+        publishedAt: initialRoute?.publishedAt ?? new Date().toISOString(),
+        coordinates: initialRoute?.coordinates ?? null,
       };
 
       await onSubmit(input);
@@ -286,7 +303,7 @@ export function RouteForm({ onSubmit }: RouteFormProps) {
           type="file"
           accept="image/jpeg,image/png,image/webp"
           onChange={handlePhotoChange}
-          required
+          required={!photoUrl}
         />
         <span className="muted">
           JPG, PNG или WebP, не более 60 КБ для локального mock API.
@@ -319,9 +336,11 @@ export function RouteForm({ onSubmit }: RouteFormProps) {
           disabled={saving || photoLoading}
         >
           {photoLoading
-            ? "Обрабатываем фото..."
-            : saving
-              ? "Публикуем..."
+          ? "Обрабатываем фото..."
+          : saving
+            ? "Сохраняем..."
+            : initialRoute
+              ? "Сохранить изменения"
               : "Опубликовать маршрут"}
         </button>
       </div>
