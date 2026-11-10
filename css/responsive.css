@@ -2,6 +2,9 @@
   .site-header {
     padding: 16px;
   }
+  .map-canvas {
+  min-height: 360px;
+  }
 
   .main-navigation {
     flex-wrap: wrap;

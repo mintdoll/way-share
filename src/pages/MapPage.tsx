@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FeedState } from "../components/FeedState";
 import { useFeed } from "../hooks/useFeed";
 import { CATEGORY_LABELS } from "../types/route";
-
+import { YandexMapView } from "../components/YandexMapView";
 export function MapPage() {
   const { routes, loading, error, reload } = useFeed();
   const [searchText, setSearchText] = useState("");
@@ -39,6 +39,9 @@ export function MapPage() {
 
     return matchesCategory && matchesSearch;
   });
+  const routesWithCoordinates = visibleRoutes.filter(
+  (route) => route.coordinates !== null,
+).length;
 
   return (
     <section className="map-page section">
@@ -115,14 +118,13 @@ export function MapPage() {
           </div>
         </aside>
 
-        <div className="empty-map" role="region" aria-label="Область карты">
-          <div>
-            <h2>Здесь появится карта</h2>
-            <p>
-              Пока выберите маршрут из списка. Интерактивную карту подключим
-              следующим шагом.
-            </p>
-          </div>
+        <div className="map-panel">
+            <YandexMapView routes={visibleRoutes} />
+            {routesWithCoordinates === 0 && (
+                <p>
+                    У этих маршрутов пока нет координат, поэтому на карте не отображаются метки.
+                    </p>
+            )}
         </div>
       </div>
     </section>

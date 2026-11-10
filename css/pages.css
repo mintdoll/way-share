@@ -559,3 +559,20 @@ fieldset input,
   padding: 48px 20px;
   text-align: center;
 }
+.map-canvas {
+  min-height: 560px;
+  overflow: hidden;
+  border: 1px solid #e8eaf0;
+  border-radius: 18px;
+  background: #eef1f7;
+}
+
+.map-canvas-message {
+  padding: 24px;
+  color: var(--muted);
+}
+
+.map-panel > p {
+  margin-top: 12px;
+  color: var(--muted);
+}
