@@ -7,7 +7,7 @@ export function SiteHeader() {
 
       <nav className="main-navigation" aria-label="Основная навигация">
         <NavLink to="/" end>Лента</NavLink>
-        <a href="/map.html">Карта</a>
+        <NavLink to="/map">Карта</NavLink>
         <NavLink to="/routes/new">Создать маршрут</NavLink>
         <NavLink to="/profile/1">Профиль</NavLink>
       </nav>

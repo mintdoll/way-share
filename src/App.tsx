@@ -4,6 +4,7 @@ import { FeedPage } from "./pages/FeedPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { RouteDetailsPage } from "./pages/RouteDetailsPage";
 import { CreateRoutePage } from "./pages/CreateRoutePage";
+import { MapPage } from "./pages/MapPage";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <Routes>
         <Route element={<SiteLayout />}>
           <Route path="/" element={<FeedPage />} />
+          <Route path="/map" element={<MapPage />} />
           <Route path="/routes" element={<Navigate to="/" replace />} />
           <Route path="/routes/new" element={<CreateRoutePage />} />
           <Route

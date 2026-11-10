@@ -24,7 +24,15 @@
 .route-card p {
   margin-bottom: 6px;
 }
+.map-route-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
 
+.map-route-link:hover {
+  border-color: #c9d3e6;
+}
 .primary-button,
 .secondary-button {
   display: inline-flex;
