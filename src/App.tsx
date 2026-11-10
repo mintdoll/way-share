@@ -1,9 +1,8 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { SiteLayout, NotFoundPage } from "./components/SiteLayout";
 import { FeedPage } from "./pages/FeedPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { RouteDetailsPage } from "./pages/RouteDetailsPage";
-import { RoutesPage } from "./pages/RoutesPage";
 import { CreateRoutePage } from "./pages/CreateRoutePage";
 
 export default function App() {
@@ -12,7 +11,7 @@ export default function App() {
       <Routes>
         <Route element={<SiteLayout />}>
           <Route path="/" element={<FeedPage />} />
-          <Route path="/routes" element={<RoutesPage />} />
+          <Route path="/routes" element={<Navigate to="/" replace />} />
           <Route path="/routes/new" element={<CreateRoutePage />} />
           <Route
             path="/routes/:routeId"

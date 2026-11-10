@@ -1,10 +1,18 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { FeedPost } from "../components/FeedPost";
 import { FeedState } from "../components/FeedState";
 import { useRouteDetails } from "../hooks/useRouteDetails";
 
 export function RouteDetailsPage() {
   const { routeId } = useParams<{ routeId: string }>();
+  const location = useLocation();
+  const fromProfileUserId = location.state?.fromProfileUserId;
+  const profileReturnTo =
+  typeof fromProfileUserId === "number" &&
+  Number.isInteger(fromProfileUserId) &&
+  fromProfileUserId > 0
+    ? `/profile/${fromProfileUserId}`
+    : null;
   const parsedId = Number(routeId);
   const id = Number.isInteger(parsedId) && parsedId > 0 ? parsedId : null;
 
@@ -34,8 +42,8 @@ export function RouteDetailsPage() {
 
   return (
     <section className="route-details-page section">
-      <Link className="back-link" to="/routes">
-        ← Все маршруты
+      <Link className="back-link" to={profileReturnTo ?? "/"}>
+         {profileReturnTo ? "← Вернуться к профилю" : "← Все маршруты"}
       </Link>
       <FeedPost route={route} author={author} />
     </section>

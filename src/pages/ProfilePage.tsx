@@ -1,7 +1,7 @@
-import { useParams } from "react-router-dom";
-import { FeedList } from "../components/FeedList";
+import { Link, useParams } from "react-router-dom";
 import { FeedState } from "../components/FeedState";
 import { useFeed } from "../hooks/useFeed";
+import { CATEGORY_LABELS } from "../types/route";
 
 export function ProfilePage() {
   const { userId } = useParams<{ userId: string }>();
@@ -13,7 +13,7 @@ export function ProfilePage() {
 
   if (loading || error) {
     return (
-      <section className="section">
+      <section className="profile-page section">
         <FeedState
           loading={loading}
           error={error}
@@ -28,9 +28,12 @@ export function ProfilePage() {
 
   if (!user) {
     return (
-      <section className="section">
+      <section className="profile-page section">
         <h1>Профиль не найден</h1>
-        <p>Проверьте ссылку или вернитесь к ленте маршрутов.</p>
+        <p>Проверьте ссылку или вернитесь к ленте.</p>
+        <Link className="secondary-button" to="/">
+          Перейти к ленте
+        </Link>
       </section>
     );
   }
@@ -42,6 +45,7 @@ export function ProfilePage() {
   const followingCount = follows.filter(
     (follow) => follow.followerId === user.id,
   ).length;
+
   const initials = user.displayName
     .trim()
     .split(/\s+/)
@@ -51,7 +55,7 @@ export function ProfilePage() {
 
   return (
     <section className="profile-page section">
-      <div className="profile-summary">
+      <header className="profile-header">
         {user.avatarUrl ? (
           <img
             className="profile-avatar"
@@ -64,36 +68,58 @@ export function ProfilePage() {
           </div>
         )}
 
-        <div className="profile-info">
-          <p className="eyebrow">@{user.username}</p>
-          <h1>{user.displayName}</h1>
-          <p className="muted">{user.bio}</p>
+        <div className="profile-details">
+          <div className="profile-title-row">
+            <h1>{user.username}</h1>
+            <Link className="profile-action" to="/routes/new">
+              Создать маршрут
+            </Link>
+          </div>
 
-          <div className="profile-stats">
-            <div>
-              <strong>{userRoutes.length}</strong>
-              <span>маршрутов</span>
-            </div>
-            <div>
-              <strong>{followersCount}</strong>
-              <span>подписчиков</span>
-            </div>
-            <div>
-              <strong>{followingCount}</strong>
-              <span>подписок</span>
-            </div>
+          <div className="profile-stats" aria-label="Статистика профиля">
+            <span><strong>{userRoutes.length}</strong> публикаций</span>
+            <span><strong>{followersCount}</strong> подписчиков</span>
+            <span><strong>{followingCount}</strong> подписок</span>
+          </div>
+
+          <div className="profile-bio">
+            <strong>{user.displayName}</strong>
+            <p>{user.bio}</p>
           </div>
         </div>
-      </div>
+      </header>
 
-      <div className="profile-routes">
-        <h2>Маршруты пользователя</h2>
-        {userRoutes.length > 0 ? (
-          <FeedList routes={userRoutes} users={users} />
-        ) : (
-          <p>Пользователь пока не опубликовал маршруты.</p>
-        )}
-      </div>
+      <nav className="profile-tabs" aria-label="Разделы профиля">
+        <span className="profile-tab profile-tab-active">Публикации</span>
+      </nav>
+
+      {userRoutes.length > 0 ? (
+        <div className="profile-post-grid">
+          {userRoutes.map((route) => (
+            <Link
+              className="profile-post"
+              key={route.id}
+              to={`/routes/${route.id}`}
+              state={{ fromProfileUserId: user.id }}
+              aria-label={`${route.title}, категория ${CATEGORY_LABELS[route.category]}`}
+            >
+              <img src={route.photoUrl} alt="" />
+              <span className="profile-post-overlay">
+                <strong>{route.title}</strong>
+                <span>{CATEGORY_LABELS[route.category]}</span>
+              </span>
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <div className="profile-empty">
+          <h2>Публикаций пока нет</h2>
+          <p>Создайте первый маршрут и поделитесь им с сообществом.</p>
+          <Link className="primary-button" to="/routes/new">
+            Создать маршрут
+          </Link>
+        </div>
+      )}
     </section>
   );
 }
