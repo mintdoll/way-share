@@ -1,0 +1,114 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "anna",
+      "displayName": "Анна Смирнова",
+      "bio": "Люблю прогулки, интересные места и новые маршруты.",
+      "avatarUrl": ""
+    },
+    {
+      "id": 2,
+      "username": "maria",
+      "displayName": "Мария Иванова",
+      "bio": "Ищу красивые места и делюсь маршрутами по городу.",
+      "avatarUrl": ""
+    }
+  ],
+  "routes": [
+    {
+      "id": 1,
+      "authorId": 1,
+      "title": "Прогулка по центру",
+      "category": "walk",
+      "location": "Площадь Ленина",
+      "budget": 500,
+      "duration": 2,
+      "description": "Пройдите по центральным улицам, загляните на площадь и осмотрите старые здания города.",
+      "format": "friends",
+      "isPublic": true,
+      "photoUrl": "/assets/images/центр.jpg",
+      "publishedAt": "2026-11-01T10:00:00.000Z",
+      "coordinates": null
+    },
+    {
+      "id": 2,
+      "authorId": 2,
+      "title": "Вечерняя набережная",
+      "category": "walk",
+      "location": "Нижняя набережная",
+      "budget": 0,
+      "duration": 3,
+      "description": "Спокойный маршрут вдоль воды. Лучше всего идти ближе к закату, когда включается городское освещение.",
+      "format": "solo",
+      "isPublic": true,
+      "photoUrl": "/assets/images/набережная.jpg",
+      "publishedAt": "2026-11-02T16:30:00.000Z",
+      "coordinates": null
+    },
+    {
+      "id": 3,
+      "authorId": 1,
+      "title": "Где поесть в центре",
+      "category": "food",
+      "location": "Улица Карла Маркса",
+      "budget": 1500,
+      "duration": 2,
+      "description": "Небольшой гастрономический маршрут по кафе и уютным местам в центре города.",
+      "format": "friends",
+      "isPublic": true,
+      "photoUrl": "/assets/images/тц.jpg",
+      "publishedAt": "2026-11-03T12:15:00.000Z",
+      "coordinates": null
+    },
+    {
+      "id": 4,
+      "authorId": 2,
+      "title": "История города",
+      "category": "culture",
+      "location": "Краеведческий музей",
+      "budget": 800,
+      "duration": 3,
+      "description": "Посетите музей, а затем прогуляйтесь по историческим улицам рядом с ним.",
+      "format": "family",
+      "isPublic": true,
+      "photoUrl": "/assets/images/исторический центр.jpg",
+      "publishedAt": "2026-11-04T08:20:00.000Z",
+      "coordinates": null
+    },
+    {
+      "authorId": 1,
+      "title": "Тихий день в парке",
+      "category": "nature",
+      "location": "Городской парк",
+      "budget": 0,
+      "duration": 4,
+      "description": "Маршрут для отдыха на природе: дорожки парка, тихие места и неспешная прогулка",
+      "format": "solo",
+      "isPublic": true,
+      "photoUrl": "/assets/images/парк.jpg",
+      "publishedAt": "2026-11-04T09:00:00.000Z",
+      "coordinates": null,
+      "id": 5
+    }
+  ],
+  "follows": [
+    {
+      "id": 1,
+      "followerId": 1,
+      "followedId": 2
+    }
+  ],
+  "savedRoutes": [
+    {
+      "id": 1,
+      "userId": 1,
+      "routeId": 2
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "routeId": 1
+    }
+  ]
+}

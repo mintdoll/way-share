@@ -1,0 +1,72 @@
+:root {
+  --background: #f6f7fb;
+  --ink: #292929;
+  --muted: #797778;
+  --line: #c6cff1;
+  --logo: #fb8db9;
+  --primary-dark: #8291f3;
+  --focus: #2563eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--ink);
+  font: 16px/1.5 Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 44px;
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+.eyebrow {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.muted,
+.route-meta {
+  color: var(--muted);
+}

@@ -1,68 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WayShare - главная</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js" defer></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WayShare</title>
   </head>
-
   <body>
-    <header class="site-header">
-      <a class="logo" href="index.html">WayShare</a>
-
-      <nav class="main-navigation" aria-label="Основная навигация">
-        <a href="index.html" aria-current="page">Главная</a>
-        <a href="map.html">Карта</a>
-        <a href="create-route.html">Создать маршрут</a>
-        <a href="profile.html">Профиль</a>
-      </nav>
-
-      <button class="menu-button" type="button" aria-label="Открыть меню">
-        Меню
-      </button>
-    </header>
-
-<main class="home-page-main">
-  <section class="home-hero" aria-labelledby="hero-title">
-    <img
-      class="home-hero-image"
-      src="assets/images/hero-city.jpg"
-      alt="Вечерний городской пейзаж"
-    >
-
-    <div class="home-hero-overlay">
-      <div class="home-hero-content">
-        <p class="eyebrow">Лента сообщества</p>
-        <h1 id="hero-title">Открой город по-новому</h1>
-        <p>
-          Готовые маршруты, созданные людьми. Идеи для прогулок,
-          свиданий, встреч и просто хорошего дня.
-        </p>
-
-        <a class="primary-button" href="create-route.html">
-          Создать маршрут
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="route-feed" aria-labelledby="popular-routes-title">
-    <div class="feed-heading">
-      <div>
-        <p class="eyebrow">Сейчас в ленте</p>
-        <h2 id="popular-routes-title">Популярные маршруты</h2>
-      </div>
-    </div>
-
-    <div class="route-feed-list" id="feed-routes"></div>
-  </section>
-</main>
-
-    <footer class="site-footer">
-      <a class="logo" href="index.html">WayShare</a>
-      <p>Социальная сеть маршрутов и личного опыта.</p>
-    </footer>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
